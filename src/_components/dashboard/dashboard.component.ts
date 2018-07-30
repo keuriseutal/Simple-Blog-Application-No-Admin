@@ -11,24 +11,29 @@ import { User } from '../../_models/users.interface';
 })
 export class DashboardComponent implements OnInit {
 
+ currentUrl: string;
+
+  users: User[];
   posts: Post[];
-  user: User;
-  currentUser: User;
+  loggedUser: User;
+
   constructor(private dashboardService: DashboardService, private loginService: LoginService) { }
 
   ngOnInit() {
+
     this.dashboardService
       .getPosts()
       .subscribe((data: Post[]) =>{
          this.posts = data;
       })
-    /*
+    
     this.loginService
-          .getCurrentUser(this.users[i].id)
-          .subscribe((data : User) => {
-          this.user = data;
-          })
-      */
+      .getUsers()
+      .subscribe((data: User[]) =>{
+         this.users = data;
+      })
   }
 
 }
+
+

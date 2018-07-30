@@ -1,0 +1,22 @@
+.content{
+    padding-top: 40px;
+    padding-right: 80px;
+    padding-bottom: 40px;
+    padding-left: 80px;
+}
+
+div.justify{
+    text-align: justify;
+}
+
+div.left{
+    text-align: left;
+}
+
+div.right{
+    text-align: right;
+}
+
+div.center{
+    text-align: center;
+}

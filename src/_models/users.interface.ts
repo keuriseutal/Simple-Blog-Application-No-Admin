@@ -4,6 +4,7 @@ export interface User{
     id: number;
     uname: string;
     pass: string;
+    isLoggedIn: boolean;
     profile: {
         fname: string;
         mname: string;

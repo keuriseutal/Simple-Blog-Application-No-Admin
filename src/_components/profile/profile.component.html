@@ -1,3 +1,11 @@
-<p>
-  profile works!
-</p>
+<div id="container">
+  <app-dashboard-viewer></app-dashboard-viewer>
+</div>
+<br><br><br><br>
+
+<div id="content" class="content" *ngFor="let user of users">
+	{{user.id}}
+  {{user.uname}}
+  {{user.profile.fname}}
+  {{user.profile.lname}}
+</div>

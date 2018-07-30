@@ -10,6 +10,7 @@ import { PrintPasswordComponent } from '../_components/print-password/print-pass
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../_components/login/login.component';
 import { DashboardComponent } from '../_components/dashboard/dashboard.component';
+import { DashboardViewerComponent } from '../_components/dashboard-viewer/dashboard-viewer.component';
 import { ProfileComponent } from '../_components/profile/profile.component';
 import { DraftsComponent } from '../_components/drafts/drafts.component';
 import { ForgotPasswordComponent } from '../_components/forgot-password/forgot-password.component';
@@ -31,7 +32,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CreatePostComponent,
     EditPostComponent,
     RetrievePasswordComponent,
-    PrintPasswordComponent
+    PrintPasswordComponent,
+    DashboardViewerComponent
   ],
   imports: [
     BrowserModule,

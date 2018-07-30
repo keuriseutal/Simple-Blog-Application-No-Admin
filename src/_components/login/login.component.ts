@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoginService } from '../../_services/login.service';
 import { User } from '../../_models/users.interface';
+import { LoggedUser } from '../../_models/loggedUser.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,9 +11,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-users: User[];
-errMsg: string;
-user: User;
+  users: User[];
+  errMsg: string;
+  isError: boolean;
+
+  loggedUsers: LoggedUser[];
+  loggedUser: LoggedUser;
 
   constructor(private loginService: LoginService, private router: Router) {}
   
@@ -24,6 +28,7 @@ user: User;
       })
 
       this.errMsg = "";
+      this.isError = false;
   }
 
   onLogin(uname, pass){
@@ -32,18 +37,15 @@ user: User;
       for(let i = 0; i < this.users.length; i++){
         //check if username and password exists in the database
         if((this.users[i].uname == uname) && (this.users[i].pass == pass)){
-          //get current user
-          this.loginService
-          .setCurrentUser(this.users[i].id)
-          .subscribe((data : User) => {
-          this.user = data;
-          })
+          //set user as loggedIn
+          this.setAsLoggedIn(this.users[i].id, this.users[i].uname);
           //navigate to dashboard
           this.router.navigate(['/','dashboard']);
           console.log('isUser' + this.users[i].uname + this.users[i].pass);
           break;
         }else if((this.users[i].uname != uname) && (this.users[i].pass != pass)){
           this.errMsg = "The data that you've entered does not exist";
+          this.isError = true;
           console.log('!isUser' + this.users[i].uname + this.users[i].pass);
           continue;
         }
@@ -51,9 +53,19 @@ user: User;
     }//end if fields are not empty
     else{
       this.errMsg = 'Please make sure that all fields are filled';
+      this.isError = true;
     }//end else field(s) is/are empty
   }//end onLogin
 
+  setAsLoggedIn(id: number, uname: string): void {
+    uname = uname.trim();
+    if (!uname) { return; }
+    this.loginService.loginUser({ id, uname } as LoggedUser)
+      .subscribe(loggedUser => {
+        this.loggedUsers.push(loggedUser);
+      });
+  }
+  
    /*
   handleEdit(event: Passenger) {
     this.passengerService

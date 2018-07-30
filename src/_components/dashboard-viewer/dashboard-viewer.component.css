@@ -1,0 +1,8 @@
+
+.nav.navbar-nav.navbar-right li a {
+    color: red;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: ghostwhite;
+}

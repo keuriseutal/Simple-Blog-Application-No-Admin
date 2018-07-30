@@ -7,6 +7,7 @@ import { RetrievePasswordComponent } from '../../_containers/retrieve-password/r
 import { ForgotPasswordComponent }   from '../../_components/forgot-password/forgot-password.component';
 import { PrintPasswordComponent } from '../../_components/print-password/print-password.component';
 import { DashboardComponent }   from '../../_components/dashboard/dashboard.component';
+import { DashboardViewerComponent }   from '../../_components/dashboard-viewer/dashboard-viewer.component';
 import { ProfileComponent }   from '../../_components/profile/profile.component';
 import { CreatePostComponent }   from '../../_components/create-post/create-post.component';
 import { EditPostComponent }   from '../../_components/edit-post/edit-post.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'print-password', component: PrintPasswordComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'home', component: DashboardViewerComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'edit-post', component: EditPostComponent },

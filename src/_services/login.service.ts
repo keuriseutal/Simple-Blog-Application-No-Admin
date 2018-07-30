@@ -5,28 +5,36 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { User } from '../_models/users.interface';
+import { LoggedUser } from '../_models/loggedUser.interface';
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 
 const USER_API: string = 'http://localhost:3000/users';
+const LOGGEDUSER_API: string = 'http://localhost:3000/loggedUser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   
-  constructor(private http: Http) {}
+  constructor(private http: Http, private httpClient :HttpClient) {}
 
   getUsers():Observable<User[]>{
     return this.http
-      .get(USER_API).pipe(map((response: Response) => response.json()));
+      .get(USER_API)
+      .pipe(map((response: Response) => response.json()));
   }
 
-  setCurrentUser(id: number){
-    return this.http.get(USER_API+"/"+id).pipe(map((response: Response) => response.json()));
+  loginUser (loggedUser: LoggedUser): Observable<LoggedUser> {
+  return this.httpClient.post<LoggedUser>(LOGGEDUSER_API, loggedUser, httpOptions);
   }
 
-  getCurrentUser(){
-    
-  }
 /*
   updatePassenger(passenger: Passenger): Observable<Passenger> {
     return this.http
