@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostsService } from '../../_services/posts.service';
+import { Post } from '../../_models/posts.interface';
 
 @Component({
   selector: 'app-drafts',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DraftsComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[];
+
+  constructor(private postsService: PostsService) { }
 
   ngOnInit() {
+    this.postsService
+      .getDrafts()
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
   }
 
 }

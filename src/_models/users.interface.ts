@@ -1,5 +1,3 @@
-import { Post } from './posts.interface';
-
 export interface User{
     id: number;
     uname: string;
@@ -14,5 +12,4 @@ export interface User{
         bdate: number;
         interests: string[];
     };
-    posts: Post[];
 }

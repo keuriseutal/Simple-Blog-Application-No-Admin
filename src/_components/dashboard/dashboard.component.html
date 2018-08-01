@@ -3,31 +3,70 @@
 </div>
 <br><br><br><br>
 
+<!--checkboxes -->
+<div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+	<span class="glyphicon glyphicon-filter"></span> Filter by:
 
-
-<div id="content" class="panel panel-default content" *ngFor="let post of posts">
-
-	<div>
-		<span class="glyphicon glyphicon-filter"></span>Filter by: 
-		<button>Date</button>
-		<button>Author</button>
-		<button>Category</button>
-		<button>None</button>
+	<div class="input-group col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+		Date <span class="input-group-addon">
+        <input type="checkbox" [(ngModel)]="selectDate" aria-label="...">
+      </span>
+		<input type="text" class="form-control" aria-label="..." placeholder="MM/DD/YYYY" #date>
 	</div>
-	<div>
-		<span class="glyphicon glyphicon-sort"></span>Sort by: 
-		<button>Title</button>
-		<button>Recently Added</button>
+	<div class="input-group col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+		Author <span class="input-group-addon">
+        <input type="checkbox" [(ngModel)]="selectAuthor" aria-label="..." >
+      </span>
+		<input type="text" class="form-control" aria-label="..." placeholder="Username" #author>
 	</div>
+	<div class="input-group col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+		Category <span class="input-group-addon">
+        <input type="checkbox" [(ngModel)]="selectCategory" aria-label="...">
+      </span>
+		<select class='form-control' required #category>
+        <option>Animals</option>
+        <option>Fitness</option>
+		<option>Food</option>
+		<option>Life</option>
+        <option>Movie</option>
+        <option>Music</option>
+      </select>
+	</div>
+	<button type="button" class="btn btn-default" (click)="onFilter(date.value, author.value, category.value)">Filter</button>
+</div>
+
+<!--sort buttons -->
+<div class="col-md-offset-9">
+	<span class="glyphicon glyphicon-sort"></span> Sort by:
+	<div class="btn-group" role="group" aria-label="...">
+		<button type="button" class="btn btn-default" (click)="sortByTitle()">
+			<span *ngIf="titleClicks % 2 == 0" class= "glyphicon glyphicon-sort-by-alphabet"></span>
+			<span *ngIf="titleClicks % 2 != 0" class= "glyphicon glyphicon-sort-by-alphabet-alt"></span>
+				Title</button>
+		<button type="button" class="btn btn-default" (click)="sortByDate()">
+			<span *ngIf="dateClicks % 2 != 0" class= "glyphicon glyphicon-sort-by-attributes-alt"></span>
+			<span *ngIf="dateClicks % 2 == 0" class= "glyphicon glyphicon-sort-by-attributes"></span>
+				Date Posted</button>
+	</div>
+</div>
+<!--display posts -->
+<div id="content" class="panel panel-default content" *ngFor="let post of posts ">
 
 	<div class="panel-heading">
+		<div *ngIf="post.author == usersService.loggedUser.uname">
+			<button class="btn btn-default" style="float: right" (click)="onGoToEditPage(post)">
+			<span class="glyphicon glyphicon-pencil"></span></button>
+			<button class="btn btn-default" style="float: right" (click)="onDeletePost(post)">
+			<span class="glyphicon glyphicon-remove"></span></button>
+		</div>
 		<h4><b>{{post.author}}</b></h4>
+
 	</div>
 	<div class="panel-body">
 
 		<h2><b>{{post.title}}</b></h2>
-		<div>{{post.subtitle}}</div>
-		<div class="justify"><i>{{post.body}}</i></div>
+		<div><i>{{post.subtitle}}</i></div>
+		<div class="justify"><b>{{post.body}}</b></div>
 	</div>
 	<div class="panel-footer">
 		<div class="right"> Category: {{post.category}}</div>

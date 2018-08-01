@@ -4,10 +4,12 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a routerLink="/dashboard"><span class="glyphicon glyphicon-home"></span> Dashboard</a></li>
 				<li><a routerLink="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+				<li><a routerLink="/create-post"><span class="glyphicon glyphicon-plus"></span> Create Post</a></li>
 				<li><a routerLink="/drafts"><span class="glyphicon glyphicon-file"></span> Drafts</a></li>
-				<li><a routerLink="/login"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+				<li><a routerLink="/login" (click)="onLogOut()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
 			</ul>
 		</div>
 	</nav>
 </div>
 
+glyphicon glyphicon-plus

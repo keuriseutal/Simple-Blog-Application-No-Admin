@@ -1,11 +1,11 @@
-import { User } from './users.interface';
 
 export interface Post{
-    postId: number;
+    id: number;
     title: string;
     subtitle?: string;
-    author: User;
+    author: string;
     category: string;
-    date: number;
+    date: string;
     body: string;
+    isDraft: boolean;
 }

@@ -20,3 +20,8 @@ div.right{
 div.center{
     text-align: center;
 }
+
+div.dashboard
+{
+    overflow-y:scroll;
+}

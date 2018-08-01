@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
-import { LoginService } from '../../_services/login.service';
+import { UsersService } from '../../_services/users.service';
 import { User } from '../../_models/users.interface';
 import { Router } from '@angular/router';
 //bootstrap
@@ -19,10 +19,10 @@ export class ForgotPasswordComponent implements OnInit {
   isCorrect: boolean = false;
   modalRef: BsModalRef;
 
-  constructor(private loginService: LoginService, private modalService: BsModalService, private router: Router) {}
+  constructor(private usersService: UsersService, private modalService: BsModalService, private router: Router) {}
 
   ngOnInit() {
-     this.loginService
+     this.usersService
       .getUsers()
       .subscribe((data: User[]) =>{
          this.users = data;
@@ -62,10 +62,10 @@ export class ForgotPasswordComponent implements OnInit {
           console.log('isUser' + this.users[i].uname + this.users[i].profile.email + this.users[i].profile.mobile);
           console.log(this.password);
           break;
-        }else{
+        }else if((this.users[i].uname != uname) || (this.users[i].profile.email != email) || (this.users[i].profile.mobile != mobile)){
           this.isCorrect = false;
           this.errMsg = "The data that you've entered does not exist";
-          console.log('!isUser' + this.users[i].uname + this.users[i].profile.email + this.users[i].profile.mobile);
+         // console.log('!isUser' + this.users[i].uname + this.users[i].profile.email + this.users[i].profile.mobile);
           continue;
         }
       }//end loop

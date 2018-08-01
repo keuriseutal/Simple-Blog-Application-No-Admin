@@ -1,3 +1,57 @@
-<p>
-  create-post works!
-</p>
+<div id="container">
+	<app-dashboard-viewer></app-dashboard-viewer>
+</div>
+<br><br>
+
+<div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2
+                      col-xs-8 col-sm-8 col-md-8 col-lg-8">
+	<label>Title:</label>
+	<input type="text" class="form-control" #title>
+
+	<label>Subtitle(optional):</label>
+	<input type="text" class="form-control" #subtitle>
+
+	<label>Category:</label>
+	<select class='form-control' #category>
+    <option>Animals</option>
+    <option>Fitness</option>
+		<option>Food</option>
+		<option>Life</option>
+    <option>Movie</option>
+    <option>Music</option>
+    </select>
+
+	<label>Body:</label>
+	<!--
+	<div class="right">{{body}} characters left </div>
+	-->
+	<textarea class="form-control" rows="6" maxlength="100" #body></textarea>
+
+	<br>
+	<div>
+		<button type="button" class="btn btn-default" (click)="onAddPost(title.value, subtitle.value, category.value, body.value)">
+				Add Post</button>
+		<button type="button" class="btn btn-default" (click)="onSaveAsDraft(title.value, subtitle.value, category.value, body.value)">
+				Save as Draft</button>
+
+	</div>
+	<!--alert -->
+
+	<div *ngIf="isSuccess && isButtonClicked" class="alert alert-success text-center
+                                col-xs-6 col-xs-offset-3
+                                col-sm-6 col-sm-offset-3
+                                col-md-6 col-md-offset-3
+                                col-lg-6 col-lg-offset-3">
+
+		<span class="glyphicon glyphicon-ok-sign"> 			</span>{{ msg }}</div>
+
+	<div *ngIf="!isSuccess && isButtonClicked" class="alert alert-danger text-center
+                                col-xs-6 col-xs-offset-3
+                                col-sm-6 col-sm-offset-3
+                                col-md-6 col-md-offset-3
+                                col-lg-6 col-lg-offset-3">
+
+		<span class="glyphicon glyphicon-remove-sign"> 			</span>{{ msg }}</div>
+
+	<div *ngIf="!isButtonClicked">
+	</div>

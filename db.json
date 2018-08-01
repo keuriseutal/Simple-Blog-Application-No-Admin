@@ -3,10 +3,6 @@
     {
       "id": 0,
       "uname": ""
-    },
-    {
-      "id": 2,
-      "uname": "sooyaa__"
     }
   ],
   "users": [
@@ -21,42 +17,13 @@
         "lname": "Kim",
         "email": "jk@gmail.com",
         "mobile": 1111,
-        "bdate": 821721600000,
+        "bdate": "01/16/1996",
         "interests": [
           "rapping",
           "playing with dogs",
           "unnies"
         ]
-      },
-      "posts": [
-        {
-          "postId": 1,
-          "title": "Day1",
-          "subtitle": null,
-          "author": "jennierubyjane",
-          "category": "Animals",
-          "date": 1532448000000,
-          "body": "Kuma's first training was so fun. Mom's not gonna get tired of you nae kangaji"
-        },
-        {
-          "postId": 2,
-          "title": "OSAKA",
-          "subtitle": "First Concert",
-          "author": "jennierubyjane",
-          "category": "Music",
-          "date": 1532534400000,
-          "body": "Arigatou OSAKA. Blinkeu, oneulreun chaemiseo. Neomu Ddarangae"
-        },
-        {
-          "postId": 3,
-          "title": "About to quit Flying Yoga",
-          "subtitle": null,
-          "author": "jennierubyjane",
-          "category": "Fitness",
-          "date": 1532534400000,
-          "body": "Igo neun oryeopta. nan momeul ddoweo yuyuyuyu"
-        }
-      ]
+      }
     },
     {
       "id": 2,
@@ -69,33 +36,14 @@
         "lname": "Kim",
         "email": "kj@gmail.com",
         "mobile": 2222,
-        "bdate": 789062400000,
+        "bdate": "01/03/1995",
         "interests": [
-          "singing",
-          "watching dalgom",
-          "reading"
+          "reading",
+          "watching anime",
+          "playing with dalgom",
+          "messing around"
         ]
-      },
-      "posts": [
-        {
-          "postId": 4,
-          "title": "Hungry for pancreas!?",
-          "subtitle": null,
-          "author": "sooyaa__",
-          "category": "Movie",
-          "date": 1532534400000,
-          "body": "Eating a pancreas?! Ilbon saramdeul isanghae kkkkkk"
-        },
-        {
-          "postId": 5,
-          "title": "Quitting Flying Yoga",
-          "subtitle": null,
-          "author": "sooyaa__",
-          "category": "Fitness",
-          "date": 1532448000000,
-          "body": "Jennie!!!! Just quit and play with me already. Me and Dalgom missed you"
-        }
-      ]
+      }
     },
     {
       "id": 3,
@@ -108,24 +56,13 @@
         "lname": "Park",
         "email": "rp@gmail.com",
         "mobile": 3333,
-        "bdate": 855590400000,
+        "bdate": "02/11/1997",
         "interests": [
           "singing",
           "playing the guitar",
           "drawing"
         ]
-      },
-      "posts": [
-        {
-          "postId": 6,
-          "title": "Can't believe it made me cry",
-          "subtitle": "why mom? WHY?!",
-          "author": "roses_are_rosie",
-          "category": "Food",
-          "date": 1532448000000,
-          "body": "Mom's kimbap was so good that it made me cry. This is embarassing"
-        }
-      ]
+      }
     },
     {
       "id": 4,
@@ -138,95 +75,115 @@
         "lname": "Manoban",
         "email": "lm@gmail.com",
         "mobile": 4444,
-        "bdate": 859392000000,
+        "bdate": "03/27/1997",
         "interests": [
           "dancing",
           "teasing dalgom",
           "taking photos"
         ]
-      },
-      "posts": [
-        {
-          "postId": 7,
-          "title": "What to do?",
-          "subtitle": "I don't know...",
-          "author": "lalalalisa_m",
-          "category": "Life",
-          "date": 1532448000000,
-          "body": "Can't believe our stylist made me wear a skirt as a top. Wae Unniedeul??? wae?!"
-        }
-      ]
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
+      }
     }
   ],
   "posts": [
     {
-      "postId": 1,
-      "title": "Day1",
-      "subtitle": null,
-      "author": "jennierubyjane",
-      "category": "Animals",
-      "date": 1532448000000,
-      "body": "Kuma's first training was so fun. Mom's not gonna get tired of you nae kangaji"
-    },
-    {
-      "postId": 2,
+      "id": 2,
       "title": "OSAKA",
       "subtitle": "First Concert",
       "author": "jennierubyjane",
       "category": "Music",
-      "date": 1532534400000,
-      "body": "Arigatou OSAKA. Blinkeu, oneulreun chaemiseo. Neomu Ddarangae"
+      "date": "07/29/2018",
+      "body": "Arigatou OSAKA. Blinkeu, oneulreun chaemiseo. Neomu Ddarangae",
+      "isDraft": false
     },
     {
-      "postId": 3,
+      "id": 3,
       "title": "About to quit Flying Yoga",
       "subtitle": null,
       "author": "jennierubyjane",
       "category": "Fitness",
-      "date": 1532534400000,
-      "body": "Igo neun oryeopta. nan momeul ddoweo yuyuyuyu"
+      "date": "07/30/2018",
+      "body": "Igo neun oryeopta. nan momeul ddoweo yuyuyuyu",
+      "isDraft": false
     },
     {
-      "postId": 4,
+      "id": 4,
       "title": "Hungry for pancreas!?",
-      "subtitle": null,
+      "subtitle": "Omoooooo",
       "author": "sooyaa__",
       "category": "Movie",
-      "date": 1532534400000,
-      "body": "Eating a pancreas?! Ilbon saramdeul isanghae kkkkkk"
+      "date": "07/28/2018",
+      "body": "Eating a pancreas?! Ilbon saramdeul isanghae kkkkkk",
+      "isDraft": false
     },
     {
-      "postId": 5,
+      "id": 5,
       "title": "Quitting Flying Yoga",
       "subtitle": null,
       "author": "sooyaa__",
       "category": "Fitness",
-      "date": 1532448000000,
-      "body": "Jennie!!!! Just quit and play with me already. Me and Dalgom missed you"
+      "date": "07/31/2018",
+      "body": "Jennie!!!! Just quit and play with me already. Me and Dalgom missed you :(((((",
+      "isDraft": false
     },
     {
-      "postId": 6,
+      "id": 6,
       "title": "Can't believe it made me cry",
       "subtitle": "why mom? WHY?!",
       "author": "roses_are_rosie",
       "category": "Food",
-      "date": 1532448000000,
-      "body": "Mom's kimbap was so good that it made me cry. This is embarassing"
+      "date": "07/27/2018",
+      "body": "Mom's kimbap was so good that it made me cry. This is embarassing",
+      "isDraft": false
     },
     {
-      "postId": 7,
+      "id": 7,
       "title": "What to do?",
       "subtitle": "I don't know...",
       "author": "lalalalisa_m",
       "category": "Life",
-      "date": 1532448000000,
-      "body": "Can't believe our stylist made me wear a skirt as a top. Wae Unniedeul??? wae?!"
+      "date": "07/29/2018",
+      "body": "Can't believe our stylist made me wear a skirt as a top. Wae Unniedeul??? wae?!",
+      "isDraft": false
+    },
+    {
+      "id": 8,
+      "title": "DAY 1",
+      "subtitle": "Today is Pet Day",
+      "author": "jennierubyjane",
+      "category": "Animals",
+      "date": "08/01/2018",
+      "body": "yah yah yah yah yah yah yah kuma-yah",
+      "isDraft": false
+    },
+    {
+      "id": 9,
+      "title": "YAYAYAYAYA",
+      "subtitle": "haengbuk",
+      "author": "jennierubyjane",
+      "category": "Food",
+      "date": "8/1/2018",
+      "body": "TTEOKBOKKI HERE I COME",
+      "isDraft": false
+    },
+    {
+      "id": 10,
+      "title": "DDU DU DDU DU",
+      "subtitle": "summer bop",
+      "author": "roses_are_rosie",
+      "category": "Music",
+      "date": "8/1/2018",
+      "body": "hit you with that DDDD is so lit",
+      "isDraft": false
+    },
+    {
+      "id": 11,
+      "title": "ALMOST HOME! ",
+      "subtitle": "1 more day",
+      "author": "lalalalisa_m",
+      "category": "Fitness",
+      "date": "8/1/2018",
+      "body": "Can't believe I got fit in 5 days",
+      "isDraft": false
     }
   ]
 }

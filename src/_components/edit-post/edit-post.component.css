@@ -1,0 +1,9 @@
+div.right{
+    text-align: right;
+}
+textarea
+{
+    overflow-y:scroll;
+}
+
+button {width: 50%;}

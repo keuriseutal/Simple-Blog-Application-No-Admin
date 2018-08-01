@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule }     from './app-routing/app-routing.module';
+import { FormsModule } from '@angular/forms';
 //containers
 import { RetrievePasswordComponent } from '../_containers/retrieve-password/retrieve-password.component';
 //components
@@ -17,9 +18,11 @@ import { ForgotPasswordComponent } from '../_components/forgot-password/forgot-p
 import { CreatePostComponent } from '../_components/create-post/create-post.component';
 import { EditPostComponent } from '../_components/edit-post/edit-post.component';
 //services
-import { LoginService } from '../_services/login.service';
+import { UsersService } from '../_services/users.service';
+import { PostsService } from '../_services/posts.service';
+import { ProfileService } from '../_services/profile.service';
+//styles
 import { ModalModule } from 'ngx-bootstrap/modal';
-
 
 @NgModule({
   declarations: [
@@ -40,9 +43,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpModule,
     HttpClientModule,
     AppRoutingModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FormsModule
   ],
-  providers: [LoginService],
+  providers: [UsersService, PostsService, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
