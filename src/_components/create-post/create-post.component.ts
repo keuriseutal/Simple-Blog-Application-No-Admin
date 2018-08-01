@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../../_services/posts.service';
 import { UsersService } from '../../_services/users.service';
 import { Post } from '../../_models/posts.interface';
+import { User } from '../../_models/users.interface';
 
 @Component({
   selector: 'app-create-post',
@@ -85,4 +86,3 @@ export class CreatePostComponent implements OnInit {
 }
 
 
-}

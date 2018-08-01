@@ -29,7 +29,7 @@
 
 	<label>Body:</label>
 	<div class="right">{{100 - postsService.post.body.length}} characters left </div>
-	<textarea class="form-control" rows="6" [(ngModel)]="postsService.post.body" [value]="postsService.post.body" (input)="onInput()"
+	<textarea class="form-control" rows="6" [(ngModel)]="postsService.post.body" [value]="postsService.post.body" 
 		maxlength="100" #body></textarea>
 
 	<br>

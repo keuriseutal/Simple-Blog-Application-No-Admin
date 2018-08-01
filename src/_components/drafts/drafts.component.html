@@ -7,11 +7,11 @@
 <div id="content" class="panel panel-default content" *ngFor="let post of posts ">
 
 	<div class="panel-heading">
-		<div *ngIf="post.author == usersService.loggedUser.uname">
-			<button class="btn btn-default" style="float: right" (click)="onGoToEditPage(post)">
-			<span class="glyphicon glyphicon-pencil"></span></button>
-			<button class="btn btn-default" style="float: right" (click)="onDeletePost(post)">
+		<div>
+			<button class="btn btn-default" style="float: right" (click)="onDiscard(post)">
 			<span class="glyphicon glyphicon-remove"></span></button>
+			<button class="btn btn-default" style="float: right" (click)="onPost(post)">
+			<span class="glyphicon glyphicon-ok"></span></button>
 		</div>
 		<h4><b>{{post.author}}</b></h4>
 

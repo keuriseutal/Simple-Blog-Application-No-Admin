@@ -37,6 +37,11 @@ export class PostsService {
     return this.http
       .get(POST_API + "?isDraft=true").pipe(map((response: Response) => response.json()));
   }
+
+  submitDraft(post: Post){
+    return this.httpClient.put(`${POST_API}/${post.id}`, post, httpOptions);
+  }
+
   addPost(post: Post): Observable<any> {
     return this.httpClient.post<Post>(POST_API, post, httpOptions);
   }

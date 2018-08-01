@@ -21,4 +21,17 @@ export class DraftsComponent implements OnInit {
       })
   }
 
+  onDiscard(post) {
+    this.posts = this.posts.filter(h => h !== post);
+    this.postsService.deletePost(post).subscribe();
+  }//end onDiscard
+
+  onPost(post : Post) {
+    this.posts = this.posts.filter(h => h !== post);
+    this.postsService.post = post;
+    this.postsService.post.isDraft = false;
+    this.postsService.submitDraft(this.postsService.post).subscribe();
+    console.log(this.postsService.post);
+  }//end onPost
+
 }

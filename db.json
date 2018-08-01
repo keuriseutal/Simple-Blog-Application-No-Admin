@@ -184,6 +184,26 @@
       "date": "8/1/2018",
       "body": "Can't believe I got fit in 5 days",
       "isDraft": false
+    },
+    {
+      "id": 12,
+      "title": "SAMPLE DRAFT",
+      "subtitle": "",
+      "author": "sooyaa__",
+      "category": "Animals",
+      "date": "8/1/2018",
+      "body": "",
+      "isDraft": false
+    },
+    {
+      "id": 13,
+      "title": "SAMPLE DRAFT 2",
+      "subtitle": "",
+      "author": "sooyaa__",
+      "category": "Animals",
+      "date": "8/1/2018",
+      "body": "",
+      "isDraft": false
     }
   ]
 }
