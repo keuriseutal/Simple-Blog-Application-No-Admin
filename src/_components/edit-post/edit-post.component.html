@@ -1,7 +1,8 @@
 <div id="container">
 	<app-dashboard-viewer></app-dashboard-viewer>
 </div>
-<br><br>
+<br>
+<br>
 
 <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2
                       col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -16,48 +17,48 @@
 
 	<label>Category:</label>
 	<select class='form-control' #category>
-    <option>Animals</option>
-    <option>Fitness</option>
+		<option>Animals</option>
+		<option>Fitness</option>
 		<option>Food</option>
 		<option>Life</option>
-    <option>Movie</option>
-    <option>Music</option>
-    </select>
+		<option>Movie</option>
+		<option>Music</option>
+	</select>
 
 	<label>Date Posted:</label>
 	<input type="text" class="form-control" [(ngModel)]="postsService.post.date" [value]="postsService.post.date" readonly>
 
 	<label>Body:</label>
-	<div class="right">{{100 - postsService.post.body.length}} characters left </div>
-	<textarea class="form-control" rows="6" [(ngModel)]="postsService.post.body" [value]="postsService.post.body" 
-		maxlength="100" #body></textarea>
+	<div class="right">{{postsService.post.body.length}} characters </div>
+	<textarea class="form-control" rows="6" [(ngModel)]="postsService.post.body" [value]="postsService.post.body" #body></textarea>
 
 	<br>
 	<div>
 		<button type="button" class="btn btn-default" (click)="onGoBack()">
-				Back</button>
+			Back</button>
 		<button type="button" class="btn btn-default" (click)="onEditPost(title.value, subtitle.value, category.value, body.value)">
-				Edit Post</button>
+			Edit Post</button>
 
 	</div>
 
 	<!--alert -->
-
 	<div *ngIf="isSuccess && isButtonClicked" class="alert alert-success text-center
-                                col-xs-6 col-xs-offset-3
-                                col-sm-6 col-sm-offset-3
-                                col-md-6 col-md-offset-3
-                                col-lg-6 col-lg-offset-3">
+			col-xs-6 col-xs-offset-3
+			col-sm-6 col-sm-offset-3
+			col-md-6 col-md-offset-3
+			col-lg-6 col-lg-offset-3">
 
-		<span class="glyphicon glyphicon-ok-sign"> 			</span>{{ msg }}</div>
-
+		<span class="glyphicon glyphicon-ok-sign"> </span>{{ msg }}</div>
 	<div *ngIf="!isSuccess && isButtonClicked" class="alert alert-danger text-center
                                 col-xs-6 col-xs-offset-3
                                 col-sm-6 col-sm-offset-3
                                 col-md-6 col-md-offset-3
                                 col-lg-6 col-lg-offset-3">
 
-		<span class="glyphicon glyphicon-remove-sign"> 			</span>{{ msg }}</div>
+		<span class="glyphicon glyphicon-remove-sign"> </span>{{ msg }}</div>
 
-	<div *ngIf="!isButtonClicked">
+
+
+
+	<div *ngIf="!isButtonClicked && !isSuccess">
 	</div>

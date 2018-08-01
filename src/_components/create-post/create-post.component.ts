@@ -15,11 +15,13 @@ export class CreatePostComponent implements OnInit {
   posts: Post[];
   date: string;
   author: string;
-  //body: number;
+  
+  bodyCount: number = 0;
 
   msg: string;
-  isSuccess: boolean;
-  isButtonClicked: boolean;
+  isSuccess: boolean = false;
+  isButtonClicked: boolean = false;
+
   constructor(private usersService: UsersService, private postsService: PostsService) {
 
   }
@@ -27,6 +29,7 @@ export class CreatePostComponent implements OnInit {
   ngOnInit() {
     console.log(this.usersService.loggedUser);
     this.author = this.usersService.loggedUser.uname;
+    this.date = this.getDate();
   }
 
   getDate() {
@@ -35,53 +38,73 @@ export class CreatePostComponent implements OnInit {
 
     return month.toString() + "/" + date.getDate().toString() + "/" + date.getFullYear().toString();
   }
-  /*
-    onInput(){
-      this.body += 1;
-    }
-  */
+
+  onInput(body){
+    this.bodyCount = body.length;
+  }
+  
   onAddPost(title, subtitle, category, body) {
     this.date = this.getDate();
-    this.msg = "Your post was added successfully";
     this.isButtonClicked = true;
-    this.isSuccess = true;
+    //check if required fields are filled correctly
+    if (body.length >= 100 && title.length != 0) {
+      this.msg = "Your post was added successfully";
+      this.isSuccess = true;
 
-    this.post = {
-      id: 0,
-      title: title,
-      subtitle: subtitle,
-      author: this.author,
-      category: category,
-      date: this.date,
-      body: body,
-      isDraft: false
-    };
+      this.post = {
+        id: 0,
+        title: title,
+        subtitle: subtitle,
+        author: this.author,
+        category: category,
+        date: this.date,
+        body: body,
+        isDraft: false
+      };
 
-    this.postsService.addPost(this.post).subscribe((data: Post) => {
-      this.post = data;
-    });
+      this.postsService.addPost(this.post).subscribe((data: Post) => {
+        this.post = data;
+      });
+    } else if (body.length < 100) {
+      this.isSuccess = false;
+      this.msg = "ERROR! The body must not contain less than 100 characters";
+
+    } else if (title.length == 0) {
+      this.isSuccess = false;
+      this.msg = "ERROR! The title must not be empty";
+    }
   }
 
   onSaveAsDraft(title, subtitle, category, body) {
     this.date = this.getDate();
-    this.msg = "Your post was successfully saved as draft";
     this.isButtonClicked = true;
-    this.isSuccess = true;
+    //check if required fields are filled correctly
+    if (body.length >= 100 && title.length != 0) {
+      this.msg = "Your post was successfully saved as draft";
+      this.isSuccess = true;
 
-    this.post = {
-      id: 0,
-      title: title,
-      subtitle: subtitle,
-      author: this.author,
-      category: category,
-      date: this.date,
-      body: body,
-      isDraft: true
-    };
+      this.post = {
+        id: 0,
+        title: title,
+        subtitle: subtitle,
+        author: this.author,
+        category: category,
+        date: this.date,
+        body: body,
+        isDraft: true
+      };
 
-    this.postsService.addPost(this.post).subscribe((data: Post) => {
-      this.post = data;
-    });
+      this.postsService.addPost(this.post).subscribe((data: Post) => {
+        this.post = data;
+      });
+    }else if (body.length < 100) {
+      this.isSuccess = false;
+      this.msg = "ERROR! The body must not contain less than 100 characters";
+
+    } else if (title.length == 0) {
+      this.isSuccess = false;
+      this.msg = "ERROR! The title must not be empty";
+    }
   }
 }
 

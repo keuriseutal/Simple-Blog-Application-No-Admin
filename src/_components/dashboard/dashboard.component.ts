@@ -12,157 +12,143 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  posts: Post[];
+  posts: Post[] = [];
 
-  sortOrder: string = "desc";
-  sortBy: string = "?_sort=date&_order=";
-
-  dateClicks: number = 0;
   titleClicks: number = 0;
 
   selectDate: boolean = false;
   selectAuthor: boolean = false;
   selectCategory: boolean = false;
 
+  titleSortOrder: string = "asc";
+  currentURL: string = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc";
+
   constructor(private postsService: PostsService,
-              private usersService: UsersService,
-              private router: Router) { }
+    private usersService: UsersService,
+    private router: Router) { }
 
   ngOnInit() {
 
     this.postsService
-      .getPosts(this.sortBy + this.sortOrder)
+      .getPosts(this.currentURL)
       .subscribe((data: Post[]) => {
         this.posts = data;
       })
 
   }
 
-  sortByDate() {
-    this.sortBy = "?_sort=date&_order=";
-
-    ++this.dateClicks;  //increment clicks for date for toggling sort order
-
-    if (this.dateClicks % 2 == 0) {
-      this.sortOrder = "desc";
-    } else {
-      this.sortOrder = "asc";
-    }
-
-    //if no filter
-    if (this.selectAuthor == false && this.selectCategory == false && this.selectDate == false) {
-
-      this.postsService
-        .getPosts(this.sortBy + this.sortOrder)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
-    }
-
-  }//end sort by date
-
-  sortByTitle() {
-    this.sortBy = "?_sort=title&_order=";
-
-    ++this.titleClicks; //increment clicks for title for toggling sort order
-
+   onGetPosts(date, author, category) {
+    
+    this.titleClicks += 1; //increment clicks for title for toggling sort order
+    
     if (this.titleClicks % 2 == 0) {
-      this.sortOrder = "desc";
-    } else {
-      this.sortOrder = "asc";
+      this.titleSortOrder = "asc";
+    } else if (this.titleClicks % 2 != 0) {
+      this.titleSortOrder = "desc";
     }
-
-    //if no filter
-    if (this.selectAuthor == false && this.selectCategory == false && this.selectDate == false) {
-
-      this.postsService
-        .getPosts(this.sortBy + this.sortOrder)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
-    } else {
-
-    }
-
-  }//end sort by title
-
-  onFilter(date, author, category) {
-    console.log(this.sortBy + this.sortOrder);
-    //if nothing will be filtered
+    
+    console.log(this.currentURL);
+    
+      //if nothing will be filtered
     if (this.selectDate == false && this.selectAuthor == false && this.selectCategory == false) {
+      
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc";
 
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+      
       //if only the date will be filtered
     } else if (this.selectDate == true && this.selectAuthor == false && this.selectCategory == false) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&date=" + date;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&date=" + date)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
       //if only the author will be filtered
     } else if (this.selectDate == false && this.selectAuthor == true && this.selectCategory == false) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&author=" + author;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&author=" + author)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
       //if only the category will be filtered
     } else if (this.selectDate == false && this.selectAuthor == false && this.selectCategory == true) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&category=" + category;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&category=" + category)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
       //if only the date & author will be filtered
     } else if (this.selectDate == true && this.selectAuthor == true && this.selectCategory == false) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&date=" + date + "&author=" + author;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&date=" + date + "&author=" + author)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
       //if only the date & category will be filtered
     } else if (this.selectDate == true && this.selectAuthor == false && this.selectCategory == true) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&date=" + date + "&category=" + category;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&date=" + date + "&category=" + category)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
       //if only the author & category will be filtered
     } else if (this.selectDate == false && this.selectAuthor == true && this.selectCategory == true) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&author=" + author + "&category=" + category;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&author=" + author + "&category=" + category)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
       //if everything will be filtered
     } else if (this.selectDate == true && this.selectAuthor == true && this.selectCategory == true) {
 
+      this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&author=" + author + "&category=" + category + "&date=" + date;
+
       this.postsService
-        .getPosts(this.sortBy + this.sortOrder + "&date=" + date + "&author=" + author + "&category=" + category)
-        .subscribe((data: Post[]) => {
-          this.posts = data;
-        })
+      .getPosts(this.currentURL)
+      .subscribe((data: Post[]) => {
+        this.posts = data;
+      })
+
     }
 
-  }//end on filter
+  }//end onGetPosts
 
   onGoToEditPage(post) {
     this.postsService.post = post;
     this.router.navigate(['/', 'edit-post']);
   }//end on GoToEditPage
 
-  onDeletePost(post){
+  onDeletePost(post) {
     this.posts = this.posts.filter(h => h !== post);
     this.postsService.deletePost(post).subscribe();
   }
+
 }

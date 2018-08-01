@@ -11,6 +11,9 @@
 	<label>Subtitle(optional):</label>
 	<input type="text" class="form-control" #subtitle>
 
+	<label>Author:</label>
+	<input type="text" class="form-control" [(ngModel)]="usersService.loggedUser.uname" [value]="usersService.loggedUser.uname" readonly>
+
 	<label>Category:</label>
 	<select class='form-control' #category>
     <option>Animals</option>
@@ -21,11 +24,12 @@
     <option>Music</option>
     </select>
 
+	<label>Date Posted:</label>
+	<input type="text" class="form-control" [(ngModel)]="date" [value]="date" readonly>
+
 	<label>Body:</label>
-	<!--
-	<div class="right">{{body}} characters left </div>
-	-->
-	<textarea class="form-control" rows="6" maxlength="100" #body></textarea>
+	<div class="right">{{bodyCount}} characters </div>
+	<textarea class="form-control" rows="6" (input)="onInput(body.value)" #body></textarea>
 
 	<br>
 	<div>
