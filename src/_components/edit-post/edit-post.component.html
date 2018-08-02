@@ -3,6 +3,34 @@
 </div>
 <br>
 <br>
+<!--delete button and modal-->
+<button class="btn btn-default 
+				col-xs-1 col-sm-1 col-md-1 col-lg-1 
+				col-xs-offset-10 col-sm-offset-10 col-md-offset-10 col-lg-offset-10 a" (click)="openModal(template)">
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
+
+<ng-template #template>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">WARNING!</h4>
+		<button type="button" class="close pull-right a" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+	</div>
+	<div class="modal-body">
+		This post will be deleted. Are you sure that you want to delete this post?
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" (click)="modalRef.hide()">
+			No, continue editing
+      </button>
+
+		<button type="button" class="btn btn-default" (click)="onDeletePost(post)">
+			Yes, delete this post
+      </button>
+	  
+	</div>
+</ng-template>
 
 <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2
                       col-xs-8 col-sm-8 col-md-8 col-lg-8">
@@ -33,23 +61,40 @@
 	<textarea class="form-control" rows="6" [(ngModel)]="postsService.post.body" [value]="postsService.post.body" #body></textarea>
 
 	<br>
-	<div>
-		<button type="button" class="btn btn-default" (click)="onGoBack()">
+	<div *ngIf="!isDelete">
+		<button type="button" class="btn btn-default bottom" (click)="onGoBack()">
 			Back</button>
-		<button type="button" class="btn btn-default" (click)="onEditPost(title.value, subtitle.value, category.value, body.value)">
+		<button type="button" class="btn btn-default bottom" (click)="onEditPost(title.value, subtitle.value, category.value, body.value)">
+			Edit Post</button>
+
+	</div>
+
+	<div *ngIf="isDelete">
+		<button type="button" class="btn btn-default bottom" (click)="onGoBack()">
+			Back</button>
+		<button type="button" class="btn btn-default bottom" disabled (click)="onEditPost(title.value, subtitle.value, category.value, body.value)">
 			Edit Post</button>
 
 	</div>
 
 	<!--alert -->
-	<div *ngIf="isSuccess && isButtonClicked" class="alert alert-success text-center
+	<div *ngIf="isDelete" class="alert alert-success text-center
 			col-xs-6 col-xs-offset-3
 			col-sm-6 col-sm-offset-3
 			col-md-6 col-md-offset-3
 			col-lg-6 col-lg-offset-3">
 
 		<span class="glyphicon glyphicon-ok-sign"> </span>{{ msg }}</div>
-	<div *ngIf="!isSuccess && isButtonClicked" class="alert alert-danger text-center
+
+	<div *ngIf="isSuccess && isButtonClicked &&!isDelete" class="alert alert-success text-center
+			col-xs-6 col-xs-offset-3
+			col-sm-6 col-sm-offset-3
+			col-md-6 col-md-offset-3
+			col-lg-6 col-lg-offset-3">
+
+		<span class="glyphicon glyphicon-ok-sign"> </span>{{ msg }}</div>
+
+	<div *ngIf="!isSuccess && isButtonClicked && !isDelete" class="alert alert-danger text-center
                                 col-xs-6 col-xs-offset-3
                                 col-sm-6 col-sm-offset-3
                                 col-md-6 col-md-offset-3
@@ -57,8 +102,5 @@
 
 		<span class="glyphicon glyphicon-remove-sign"> </span>{{ msg }}</div>
 
-
-
-
-	<div *ngIf="!isButtonClicked && !isSuccess">
+	<div *ngIf="!isButtonClicked && !isSuccess && !isDelete">
 	</div>

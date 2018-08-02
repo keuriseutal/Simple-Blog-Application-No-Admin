@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   posts: Post[] = [];
+  post: Post;
 
   titleClicks: number = 0;
 
@@ -37,39 +38,37 @@ export class DashboardComponent implements OnInit {
 
   }
 
-   onGetPosts(date, author, category) {
+  onGetPosts(date, author, category) {
     
     this.titleClicks += 1; //increment clicks for title for toggling sort order
-    
+
     if (this.titleClicks % 2 == 0) {
       this.titleSortOrder = "asc";
     } else if (this.titleClicks % 2 != 0) {
       this.titleSortOrder = "desc";
     }
-    
-    console.log(this.currentURL);
-    
-      //if nothing will be filtered
+
+    //if nothing will be filtered
     if (this.selectDate == false && this.selectAuthor == false && this.selectCategory == false) {
-      
+
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc";
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
-      
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
+
       //if only the date will be filtered
     } else if (this.selectDate == true && this.selectAuthor == false && this.selectCategory == false) {
 
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&date=" + date;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
       //if only the author will be filtered
     } else if (this.selectDate == false && this.selectAuthor == true && this.selectCategory == false) {
@@ -77,10 +76,10 @@ export class DashboardComponent implements OnInit {
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&author=" + author;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
       //if only the category will be filtered
     } else if (this.selectDate == false && this.selectAuthor == false && this.selectCategory == true) {
@@ -88,10 +87,10 @@ export class DashboardComponent implements OnInit {
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&category=" + category;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
       //if only the date & author will be filtered
     } else if (this.selectDate == true && this.selectAuthor == true && this.selectCategory == false) {
@@ -99,10 +98,10 @@ export class DashboardComponent implements OnInit {
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&date=" + date + "&author=" + author;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
       //if only the date & category will be filtered
     } else if (this.selectDate == true && this.selectAuthor == false && this.selectCategory == true) {
@@ -110,10 +109,10 @@ export class DashboardComponent implements OnInit {
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&date=" + date + "&category=" + category;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
       //if only the author & category will be filtered
     } else if (this.selectDate == false && this.selectAuthor == true && this.selectCategory == true) {
@@ -121,10 +120,10 @@ export class DashboardComponent implements OnInit {
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&author=" + author + "&category=" + category;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
       //if everything will be filtered
     } else if (this.selectDate == true && this.selectAuthor == true && this.selectCategory == true) {
@@ -132,10 +131,10 @@ export class DashboardComponent implements OnInit {
       this.currentURL = "&_sort=title,date&_order=" + this.titleSortOrder + ",desc" + "&author=" + author + "&category=" + category + "&date=" + date;
 
       this.postsService
-      .getPosts(this.currentURL)
-      .subscribe((data: Post[]) => {
-        this.posts = data;
-      })
+        .getPosts(this.currentURL)
+        .subscribe((data: Post[]) => {
+          this.posts = data;
+        })
 
     }
 

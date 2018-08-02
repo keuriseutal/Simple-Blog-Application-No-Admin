@@ -1,3 +1,15 @@
 div.justify{
     text-align: justify;
 }
+
+div.center{
+    text-align: center;
+}
+
+div.left{
+    text-align: left;
+}
+
+div.right{
+    text-align: right;
+}

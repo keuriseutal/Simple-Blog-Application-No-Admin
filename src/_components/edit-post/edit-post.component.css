@@ -6,4 +6,21 @@ textarea
     overflow-y:scroll;
 }
 
-button {width: 50%;}
+button.bottom {width: 50%;}
+
+button.a{
+    width: 5%;
+}
+
+.buttons
+{
+    display: inline-flex;
+}
+
+button.right{
+    float:right;
+}   
+
+button.left{
+    float:left;
+}

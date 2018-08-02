@@ -18,6 +18,8 @@ const httpOptions = {
 //const POST_API_TITLESORT: string = 'http://localhost:3000/posts?_sort=title&_order=';
 const POST_API: string = 'http://localhost:3000/posts?isDraft=false';
 const DRAFT_API: string = 'http://localhost:3000/posts?isDraft=true&author=';
+
+const POSTS_API: string = 'http://localhost:3000/posts';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,19 +44,19 @@ export class PostsService {
   }
 
   submitDraft(post: Post){
-    return this.httpClient.put(`${POST_API}/${post.id}`, post, httpOptions);
+    return this.httpClient.put(`${POSTS_API}/${post.id}`, post, httpOptions);
   }
 
   addPost(post: Post): Observable<any> {
-    return this.httpClient.post<Post>(POST_API, post, httpOptions);
+    return this.httpClient.post<Post>(POSTS_API, post, httpOptions);
   }
 
   updatePost(post: Post): Observable<any> {
-    return this.httpClient.put(`${POST_API}/${post.id}`, post, httpOptions);
+    return this.httpClient.put(`${POSTS_API}/${post.id}`, post, httpOptions);
   }
 
   deletePost(post: Post): Observable<any> {
-    return this.httpClient.delete<Post>(`${POST_API}/${post.id}`, httpOptions);
+    return this.httpClient.delete<Post>(`${POSTS_API}/${post.id}`, httpOptions);
   }
 }
 

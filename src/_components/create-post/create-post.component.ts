@@ -15,7 +15,7 @@ export class CreatePostComponent implements OnInit {
   posts: Post[];
   date: string;
   author: string;
-  
+
   bodyCount: number = 0;
 
   msg: string;
@@ -35,14 +35,25 @@ export class CreatePostComponent implements OnInit {
   getDate() {
     let date = new Date(Date.now());
     let month = date.getMonth() + 1;
+    let day = date.getDate();
 
-    return month.toString() + "/" + date.getDate().toString() + "/" + date.getFullYear().toString();
+    if (month < 10 && day < 10) {
+      return "0" + month.toString() + "/0" + day.toString() + "/" + date.getFullYear().toString();
+    }else if (month < 10 && day > 9) {
+      return "0" + month.toString() + "/" + day.toString() + "/" + date.getFullYear().toString();
+    } else if (month > 9 && day < 10) {
+      return month.toString() + "/0" + day.toString() + "/" + date.getFullYear().toString();
+    } else {
+      return month.toString() + "/" + day.toString() + "/" + date.getFullYear().toString();
+    }
+
+
   }
 
-  onInput(body){
+  onInput(body) {
     this.bodyCount = body.length;
   }
-  
+
   onAddPost(title, subtitle, category, body) {
     this.date = this.getDate();
     this.isButtonClicked = true;
@@ -53,7 +64,7 @@ export class CreatePostComponent implements OnInit {
 
       this.post = {
         id: 0,
-        title: title,
+        title: title.toUpperCase(), //to organize sorting... sorting through url organizes uppercased letters first before lowercased letters
         subtitle: subtitle,
         author: this.author,
         category: category,
@@ -65,9 +76,12 @@ export class CreatePostComponent implements OnInit {
       this.postsService.addPost(this.post).subscribe((data: Post) => {
         this.post = data;
       });
+    } else if (title.length == 0 && body.length == 0) {
+      this.isSuccess = false;
+      this.msg = "ERROR! title and body cannot be empty";
     } else if (body.length < 100) {
       this.isSuccess = false;
-      this.msg = "ERROR! The body must not contain less than 100 characters";
+      this.msg = "ERROR! The body must contain atleast 100 characters";
 
     } else if (title.length == 0) {
       this.isSuccess = false;
@@ -97,9 +111,12 @@ export class CreatePostComponent implements OnInit {
       this.postsService.addPost(this.post).subscribe((data: Post) => {
         this.post = data;
       });
-    }else if (body.length < 100) {
+    } else if (title.length == 0 && body.length == 0) {
       this.isSuccess = false;
-      this.msg = "ERROR! The body must not contain less than 100 characters";
+      this.msg = "ERROR! title and body cannot be empty";
+    } else if (body.length < 100) {
+      this.isSuccess = false;
+      this.msg = "ERROR! The body must contain atleast 100 characters";
 
     } else if (title.length == 0) {
       this.isSuccess = false;
