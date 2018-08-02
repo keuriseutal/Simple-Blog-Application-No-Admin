@@ -23,6 +23,9 @@
 				<button class="btn btn-default" style="float: right" (click)="onDiscard(post)">
 					<span class="glyphicon glyphicon-remove"></span>
 				</button>
+				<button class="btn btn-default" style="float: right" (click)="onGoToEditPage(post)">
+					<span class="glyphicon glyphicon-pencil"></span>
+				</button>
 				<button class="btn btn-default" style="float: right" (click)="onPost(post)">
 					<span class="glyphicon glyphicon-ok"></span>
 				</button>
@@ -46,7 +49,7 @@
 		</div>
 		<div class="panel-footer">
 			<div class="right"> Category: {{post.category}}</div>
-			<div class="right">Date Posted: {{post.date | date}}</div>
+			<div class="right">Date Accessed: {{post.date | date}}</div>
 		</div>
 	</div>
 </div>

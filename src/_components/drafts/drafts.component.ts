@@ -3,6 +3,7 @@ import { PostsService } from '../../_services/posts.service';
 import { UsersService } from '../../_services/users.service';
 import { User } from '../../_models/users.interface';
 import { Post } from '../../_models/posts.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drafts',
@@ -14,7 +15,8 @@ export class DraftsComponent implements OnInit {
   posts: Post[] = [];
   date: string;
 
-  constructor(private postsService: PostsService, private usersService: UsersService) { }
+  constructor(private postsService: PostsService, private usersService: UsersService,
+              private router: Router) { }
 
   ngOnInit() {
     this.postsService
@@ -50,9 +52,16 @@ export class DraftsComponent implements OnInit {
     this.postsService.deletePost(post).subscribe();
   }//end onDiscard
 
+  onGoToEditPage(post) {
+    this.date = this.getDate(); //update the date in drafts to today
+    post.date = this.date; 
+    
+    this.postsService.post = post;
+    this.router.navigate(['/', 'edit-post']);
+  }//end on GoToEditPage
+
   onPost(post: Post) {
     this.date = this.getDate(); //update the date in drafts to today
-
     post.date = this.date;
 
     this.posts = this.posts.filter(h => h !== post);

@@ -29,7 +29,7 @@
       "id": 2,
       "uname": "sooyaa__",
       "pass": "chichu",
-      "isLoggedIn": false,
+      "isLoggedIn": true,
       "profile": {
         "fname": "Jisoo",
         "mname": "Laek",
@@ -112,7 +112,7 @@
       "author": "sooyaa__",
       "category": "Movie",
       "date": "07/28/2018",
-      "body": "Eating a pancreas?! Ilbon saramdeul isanghae kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
+      "body": "Eating a pancreas?! Ilbon saramdeul isanghae kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk",
       "isDraft": false
     },
     {
@@ -207,11 +207,11 @@
     },
     {
       "id": 18,
-      "title": "ANOTHER DRAFT FOR JEN",
+      "title": "ANOTHER DRAFT FOR MANDEUK",
       "subtitle": "",
       "author": "jennierubyjane",
       "category": "Animals",
-      "date": "08/01/2018",
+      "date": "08/02/2018",
       "body": "ANOTHER DRAFT FOR JENANOTHER DRAFT FOR JENANOTHER DRAFT FOR JENANOTHER DRAFT FOR JENANOTHER DRAFT FOR JENANOTHER DRAFT FOR JEN",
       "isDraft": true
     },
